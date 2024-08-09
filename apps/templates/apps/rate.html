@@ -1,0 +1,56 @@
+{% extends 'apps/base.html' %}
+{% load static %}
+
+{% block title %}Rate Our Website{% endblock title %}
+
+{% block main %}
+<section class="py-5">
+    <div class="container px-5">
+        <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+            <div class="text-center mb-">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-star-half"></i></i></div>
+                <h1 class="fw-bolder">Califica tu experiencia</h1>
+                <p class="lead fw-normal text-muted mb-0"></p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="rating-form">
+                            <!-- Del 1 al 5 -->
+                            {% for i in "12345" %}
+                                <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}" required>
+                                <label for="star{{ i }}">
+                                    <!-- Mostrar estrellas -->
+                                    {% for j in "12345" %}
+                                        {% if j <= i %}
+                                            <img src="{% static 'apps/assets/img/star.png' %}" alt="{{ i }} Star" width="24" height="24">
+                                        {% endif %}
+                                    {% endfor %}
+                                </label>
+                                <br>
+                            {% endfor %}
+                        </div>
+                        <!-- Campo de comentario -->
+                        <div class="mt-4">
+                            <label for="comment" class="fw-bolder">Deja tu comentario:</label>
+                            <textarea id="comment" name="comment" class="form-control" rows="4" placeholder="..."></textarea>
+                        </div>
+                        <div class="d-grid mt-4">
+                            <button class="btn btn-primary btn-lg" type="submit">Submit Rating</button>
+                        </div>
+                        <!-- Mostrar mensaje de éxito manualmente -->
+                    {% if messages %}
+                    <div class="alert alert-primary" role="alert">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

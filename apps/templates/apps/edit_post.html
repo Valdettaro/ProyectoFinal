@@ -1,0 +1,16 @@
+{% extends 'apps/base.html' %}
+
+{% block title %} Edit Post {% endblock %}
+
+{% block main %}
+<section class="py-5">
+    <div class="container px-5">
+        <h2>Edit Post</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

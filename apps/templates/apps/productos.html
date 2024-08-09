@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% extends 'apps/base.html' %}
+
+{% load static %}
+
+{% block title %} Productos {% endblock title %}
+
+{% block main %}
+
+        <!-- Content section 1-->
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'apps/assets/img/01.jpg' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Acrilico Espejo</h2>
+                            <p>La belleza del vidrio, la seguridad del plástico. Nuestras láminas de acrílico espejo ofrecen un acabado brillante y resistente, perfectas para decorar cualquier espacio.</p>
+                        </div>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                            <a class="btn btn-secondary-light btn-lg px-4" href="{% url 'acrilico_espejo' %}">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 2-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'apps/assets/img/02.jpg' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">Acrilico Color</h2>
+                            <p>Dale vida a tus proyectos con nuestro acrílico de colores vibrantes. Amplia gama de tonos disponibles para personalizar cualquier espacio.</p>
+                        </div>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                            <a class="btn btn-secondary-light btn-lg px-4" href="{% url 'acrilico_color' %}">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 3-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'apps/assets/img/03.jpg' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Acrilico Crystal</h2>
+                            <p>La alternativa segura al vidrio. Ligero, resistente a impactos y fácil de trabajar. Ideal para ventanas, puertas, muebles y mucho más.</p>
+                        </div>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                            <a class="btn btn-secondary-light btn-lg px-4" href="{% url 'acrilico_crystal' %}">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 4-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'apps/assets/img/04.jpg' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Acrilico Glitter</h2>
+                            <p>El toque final perfecto. Añade un toque de brillo y diversión a tus proyectos con nuestro acrílico glitter.</p>
+                        </div>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                            <a class="btn btn-secondary-light btn-lg px-4" href="{% url 'acrilico_glitter' %}">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+{% endblock main %}

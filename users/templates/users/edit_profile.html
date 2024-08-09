@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% extends 'apps/base.html' %}
+
+{% load static %}
+
+{% block title %}Editar Perfil{% endblock title %}
+
+{% block main %}
+<!-- Page content-->
+<section class="py-5">
+    <div class="container px-5">
+        <!-- Mostrar mensajes de éxito o error -->
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% elif message.tags == 'error' %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <!-- Profile form-->
+        <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                    <i class="bi bi-person"></i>
+                </div>
+                <h1 class="fw-bolder">Editar Perfil</h1>
+                <p class="lead fw-normal text-muted mb-0">Actualiza tu perfil y datos de cuenta</p>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- User Information -->
+                <div class="mb-4">
+                    <h2 class="h4">Información del Usuario</h2>
+                    
+                    <div class="mb-3">
+                        <label for="id_first_name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control {% if user_form.first_name.errors %}is-invalid{% endif %}" id="id_first_name" name="first_name" value="{{ user_form.first_name.value }}">
+                        <div class="invalid-feedback">{{ user_form.first_name.errors }}</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_last_name" class="form-label">Apellido</label>
+                        <input type="text" class="form-control {% if user_form.last_name.errors %}is-invalid{% endif %}" id="id_last_name" name="last_name" value="{{ user_form.last_name.value }}">
+                        <div class="invalid-feedback">{{ user_form.last_name.errors }}</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control {% if user_form.email.errors %}is-invalid{% endif %}" id="id_email" name="email" value="{{ user_form.email.value }}">
+                        <div class="invalid-feedback">{{ user_form.email.errors }}</div>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit" name="update_user">Actualizar Información</button>
+                </div>
+                
+                <!-- Profile Picture -->
+                <div class="mb-4">
+                    <h2 class="h4">Foto de Perfil</h2>
+                    <div class="mb-3">
+                        <label for="id_profile_picture" class="form-label">Imagen de Perfil</label>
+                        <input type="file" class="form-control {% if profile_form.profile_picture.errors %}is-invalid{% endif %}" id="id_profile_picture" name="profile_picture">
+                        <div class="invalid-feedback">{{ profile_form.profile_picture.errors }}</div>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit" name="update_profile">Actualizar Foto</button>
+                </div>
+                
+                <!-- Password Change -->
+                <div class="mb-4">
+                    <h2 class="h4">Cambiar Contraseña</h2>
+                    
+                    <button type="button" class="btn btn-secondary" id="toggle-password-form">Cambiar Contraseña</button>
+                    
+                    <div id="password-change-section" style="display: none;">
+                        <div class="mb-3">
+                            <label for="id_old_password" class="form-label">Contraseña Actual</label>
+                            <input type="password" class="form-control {% if password_form.old_password.errors %}is-invalid{% endif %}" id="id_old_password" name="old_password">
+                            <div class="invalid-feedback">{{ password_form.old_password.errors }}</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_new_password1" class="form-label">Nueva Contraseña</label>
+                            <input type="password" class="form-control {% if password_form.new_password1.errors %}is-invalid{% endif %}" id="id_new_password1" name="new_password1">
+                            <div class="invalid-feedback">{{ password_form.new_password1.errors }}</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_new_password2" class="form-label">Confirmar Nueva Contraseña</label>
+                            <input type="password" class="form-control {% if password_form.new_password2.errors %}is-invalid{% endif %}" id="id_new_password2" name="new_password2">
+                            <div class="invalid-feedback">{{ password_form.new_password2.errors }}</div>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit" name="update_password">Actualizar Contraseña</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.getElementById('toggle-password-form');
+    const passwordSection = document.getElementById('password-change-section');
+    
+    toggleButton.addEventListener('click', function () {
+        if (passwordSection.style.display === 'none') {
+            passwordSection.style.display = 'block';
+            toggleButton.textContent = 'Ocultar Cambiar Contraseña';
+        } else {
+            passwordSection.style.display = 'none';
+            toggleButton.textContent = 'Cambiar Contraseña';
+        }
+    });
+});
+</script>
+{% endblock main %}

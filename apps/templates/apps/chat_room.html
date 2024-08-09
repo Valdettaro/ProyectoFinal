@@ -1,0 +1,49 @@
+{% extends 'apps/base.html' %}
+
+{% block title %} Chat Room {% endblock title %}
+
+{% block main %}
+<!-- Page content -->
+<section class="py-5">
+    <div class="container px-5">
+        <!-- Chat room -->
+        <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+                <h1 class="fw-bolder">Chat Room</h1>
+                <p class="lead fw-normal text-muted mb-0">Dejanos un mensaje :D </p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <!-- Chat messages -->
+                    <div id="messages" class="mb-4" style="max-height: 500px; overflow-y: scroll; border: 0px solid #ddd; padding: 20px;">
+                        {% for message in messages %}
+                            <div class="mb-2">
+                                <strong>{{ message.user.username }}:</strong> {{ message.content }}
+                                <small class="text-muted" style="font-size: 0.75rem;"> {{ message.timestamp }}</small>
+                                {% if request.user.is_superuser %}
+                                    <a href="{% url 'delete_message' message.id %}" style="color: red; text-decoration: none; font-size: 0.875rem;">Delete</a>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Message form -->
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <textarea class="form-control" id="message" name="content" placeholder="Enter your message here..." style="height: 4rem;" required></textarea>
+                            <div class="invalid-feedback">A message is required.</div>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-sm" id="submitButton" type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

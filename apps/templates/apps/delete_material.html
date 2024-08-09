@@ -1,0 +1,28 @@
+{% extends 'apps/base.html' %}
+
+{% block title %} Eliminar Material {% endblock title %}
+
+{% block main %}
+<section class="py-5">
+    <div class="container px-5">
+        <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="bi bi-trash"></i></div>
+                <h1 class="fw-bolder">Eliminar Material</h1>
+                <p class="lead fw-normal text-muted mb-0">¿Estás seguro de que deseas eliminar el material "{{ material.material }}" de color "{{ material.color }}"?</p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <form id="delete_material" method="POST">
+                        {% csrf_token %}
+                        <div class="d-grid">
+                            <button class="btn btn-danger btn-lg" id="submitButton" type="submit">Eliminar</button>
+                            <a class="btn btn-secondary btn-lg mt-3" href="{% url 'materiales' %}">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}
