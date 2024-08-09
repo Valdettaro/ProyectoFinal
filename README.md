@@ -1,32 +1,30 @@
 Proyecto de web propia. Barra de navegacion funcional se va a dejar algo de informacion precargada
 
-# Para la pre-entrega:
-- Se usa la herencia de la barra de navegacion y el pie de pagina en la mayoria los archivos html.
+# Piezas sugeridas:
 
-- Tres clases de modelos:
-  - Contact: Se usa el formulario de contacto que es funcional y guarda los datos en el administrador de django.
-    - http://127.0.0.1:8000/contact/ 
-  - Materiales: Se usa para agregar materiales de diferentes colores.
-    -http://127.0.0.1:8000/materiales/  
-  - Rating: Añade una opcion de calificaciones. 
-    - http://127.0.0.1:8000/rate/
-  - Users: Se importa el modelo de Users que trae django.
-    - http://127.0.0.1:8000/register/ Registro de usuario. 
-    - http://127.0.0.1:8000/login/ Login de usuario (Usuario: Test Pwd: 123).
-  - Profile: Añade una imagen de perfil cuando el usuario esta logueado. 
+- NavBar    Presente en todas las paginas
+- Home      http://localhost:8000/
+- About     http://localhost:8000/about.html
+- Pages     
+- Login     http://localhost:8000/login/ **Pueden usar User: Test Pwd: 123** 
+- Signup    http://localhost:8000/register/
 
-- Formularios de busqueda:
-  - Una vez agregados los materiales se pueden buscar en la pagina http://127.0.0.1:8000/materiales/
-  - Si se registraron usuarios se pueden buscar en http://127.0.0.1:8000/search-email/
-  - Se pueden ver las diferentes valoraciones de 1 a 5 estrellas http://127.0.0.1:8000/search_ratings/
+- Messages  http://127.0.0.1:8000/chat/ **Login requerido**
+- Profile   http://127.0.0.1:8000/edit_profile/ **Login requerido**
+- Logout    http://127.0.0.1:8000/logout/   **Login requerido**
+- Get pages http://localhost:8000/search_ratings/ **Trae las valoraciones por estrella que se fueron registrando**
+- Get page  http://127.0.0.1:8000/productos/ **Lista de productos que lleva a una descripcion de los mismos**
 
-Para probar:
-- Colores ya cargados
-  - verde
-  - rojo
-    
-- Valoraciones ya hay de 1, 2, 3, 4 y 5 estrellas cargadas.
+- Create page   http://127.0.0.1:8000/forum/ **Se pueden crear, editar y eliminar cards**
+- Update Page
+- Delete page
+- Get profile   http://localhost:8000/edit_profile/ **Login requerido**
+- Update profile    http://127.0.0.1:8000/edit_profile/ **Se puede editar datos, foto y contraseña**
 
-- Mail ya cargados a@b.com b@b.com
+# Adicionales
+- Newsletter    http://localhost:8000/index.html **Almacena en el panel de django los mails registrados**
+- Valoraciones http://localhost:8000/rate/ **Calificar por estrellas y dejar un comentario**
+- http://localhost:8000/contact/ **Contacto con almacenamiento en  el panel de django**
+- http://localhost:8000/materiales/ **Se pueden agregar materiales, editarlos y/o eliminarlos. Tambien se puede buscar material por color o traer todos los materiales**
 
 ## TEMPLATE ORIGINAL https://startbootstrap.com/template/modern-business 
